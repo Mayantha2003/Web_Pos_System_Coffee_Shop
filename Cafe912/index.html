@@ -11,6 +11,44 @@
 <body>
 <main>
     <section>
+        <div id="login-screen">
+            <div class="login-card">
+                <div class="login-logo">
+                    <div class="login-logo-box">C9</div>
+                    <div class="login-logo-text">
+                        <div class="login-logo-name">CAFE 912</div>
+                        <div class="login-logo-sub">Point of Sale System</div>
+                    </div>
+                </div>
+                <div class="login-title">Welcome back 👋</div>
+                <div class="login-sub">Sign in to your POS account to continue</div>
+
+                <div class="mb-3">
+                    <label class="login-label">Username / Email</label>
+                    <input class="login-input" id="login-user" type="text" placeholder="e.g. maya or admin" autocomplete="username">
+                </div>
+                <div class="mb-1">
+                    <label class="login-label">Password</label>
+                    <div class="login-input-wrap">
+                        <input class="login-input" id="login-pass" type="password" placeholder="Enter your password" autocomplete="current-password">
+                        <button class="login-eye" id="toggle-pass" type="button"><i class="bi bi-eye"></i></button>
+                    </div>
+                </div>
+
+                <div class="login-error" id="login-error">
+                    <i class="bi bi-exclamation-circle"></i>
+                    <span id="login-error-msg">Invalid username or password.</span>
+                </div>
+
+                <button class="login-btn" id="login-btn">
+                    <i class="bi bi-box-arrow-in-right"></i> Sign In
+                </button>
+                <div class="login-footer">CAFE 912 · Colombo Branch · CF912/CMB/01<br>Powered by Web POS v2.0</div>
+            </div>
+        </div>
+
+    </section>
+    <section>
         <div id="topbar">
             <button id="menu-toggle" class="me-2"><i class="bi bi-list"></i></button>
             <div class="d-flex align-items-center gap-2 me-auto">
