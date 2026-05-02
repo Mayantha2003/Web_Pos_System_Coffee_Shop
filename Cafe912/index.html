@@ -49,51 +49,352 @@
 
     </section>
     <section>
-        <div id="topbar">
-            <button id="menu-toggle" class="me-2"><i class="bi bi-list"></i></button>
-            <div class="d-flex align-items-center gap-2 me-auto">
-                <div class="logo-box">
-                    <img src="assets/photo/img.png" alt="Logo" class="image">
-                </div>
-                <div>
-                    <span class="logo-name">CAFE 912</span>
-                </div>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-                <span class="branch-tag d-none d-sm-inline">Cafe 912 — Colombo · CF912/CMB/01</span>
-                <span style="font-size:11px;color:#7a5830;" id="clk"></span>
-                <div class="av" id="topbar-av">M</div>
-                <button class="topbar-logout d-none d-sm-flex" id="logout-btn">
-                    <i class="bi bi-box-arrow-right"></i> <span class="d-none d-md-inline">Sign Out</span>
-                </button>
+        <div class="logout-modal-bg" id="logout-modal">
+            <div class="logout-modal">
+                <div class="logout-icon"><i class="bi bi-box-arrow-right"></i></div>
+                <h5>Sign Out?</h5>
+                <p>You'll be returned to the login screen.<br>Any unsaved changes will be lost.</p>
+                <button class="logout-btn-confirm" id="logout-confirm"><i class="bi bi-box-arrow-right"></i> Yes, Sign Out</button>
+                <button class="logout-btn-cancel" id="logout-cancel">Cancel</button>
             </div>
         </div>
     </section>
-    <section>
-        <div class="sb-overlay" id="sb-overlay"></div>
-        <nav id="sidebar">
-            <div class="sb-section-label">Main</div>
-            <button class="nav-item-btn active" data-page="dash"><i class="bi bi-grid-fill"></i> Dashboard</button>
-            <button class="nav-item-btn" data-page="sale"><i class="bi bi-cart-fill"></i> Record Sale</button>
 
-            <div class="sb-section-label">Management</div>
-            <button class="nav-item-btn" data-page="items"><i class="bi bi-list-ul"></i> Item Management</button>
-            <button class="nav-item-btn" data-page="additem"><i class="bi bi-plus-circle"></i> Add Item</button>
-            <button class="nav-item-btn" data-page="custs"><i class="bi bi-people-fill"></i> Customer Mgmt</button>
-            <button class="nav-item-btn" data-page="addcust"><i class="bi bi-person-plus-fill"></i> Add Customer</button>
-            <button class="nav-item-btn" data-page="orders"><i class="bi bi-receipt"></i> Order Management</button>
+    <section id="pos-app">
 
-            <div class="sb-footer">
-                <div class="d-flex align-items-center gap-2 mb-2">
-                    <div class="mem-av" style="width:30px;height:30px;font-size:12px" id="sb-av">M</div>
+        <section>
+            <div id="topbar">
+                <button id="menu-toggle" class="me-2"><i class="bi bi-list"></i></button>
+                <div class="d-flex align-items-center gap-2 me-auto">
+                    <div class="logo-box">
+                        <img src="assets/photo/img.png" alt="Logo" class="image">
+                    </div>
                     <div>
-                        <div class="sb-footer-name" id="sb-uname">Maya</div>
-                        <div class="sb-footer-role" id="sb-urole">Cashier · CF912/CMB/01</div>
+                        <span class="logo-name">CAFE 912</span>
                     </div>
                 </div>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="branch-tag d-none d-sm-inline">Cafe 912 — Colombo · CF912/CMB/01</span>
+                    <span style="font-size:11px;color:#7a5830;" id="clk"></span>
+                    <div class="av" id="topbar-av">M</div>
+                    <button class="topbar-logout d-none d-sm-flex" id="logout-btn">
+                        <i class="bi bi-box-arrow-right"></i> <span class="d-none d-md-inline">Sign Out</span>
+                    </button>
+                </div>
             </div>
-        </nav>
+        </section>
+
+        <section>
+            <div class="sb-overlay" id="sb-overlay"></div>
+            <nav id="sidebar">
+                <div class="sb-section-label">Main</div>
+                <button class="nav-item-btn active" data-page="dash"><i class="bi bi-grid-fill"></i> Dashboard</button>
+                <button class="nav-item-btn" data-page="sale"><i class="bi bi-cart-fill"></i> Record Sale</button>
+
+                <div class="sb-section-label">Management</div>
+                <button class="nav-item-btn" data-page="items"><i class="bi bi-list-ul"></i> Item Management</button>
+                <button class="nav-item-btn" data-page="additem"><i class="bi bi-plus-circle"></i> Add Item</button>
+                <button class="nav-item-btn" data-page="custs"><i class="bi bi-people-fill"></i> Customer Mgmt</button>
+                <button class="nav-item-btn" data-page="addcust"><i class="bi bi-person-plus-fill"></i> Add Customer</button>
+                <button class="nav-item-btn" data-page="orders"><i class="bi bi-receipt"></i> Order Management</button>
+
+                <div class="sb-footer">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <div class="mem-av" style="width:30px;height:30px;font-size:12px" id="sb-av">M</div>
+                        <div>
+                            <div class="sb-footer-name" id="sb-uname">Maya</div>
+                            <div class="sb-footer-role" id="sb-urole">Cashier · CF912/CMB/01</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </section>
+
+        <section>
+            <div id="main-content">
+
+                <!-- ── DASHBOARD ── -->
+                <div class="page active" id="p-dash">
+                    <div class="greet-banner">
+                        <div>
+                            <p>Good evening,</p>
+                            <h2>Maya</h2>
+                            <p style="font-size:11px;color:#7a5830;margin-top:5px">Cafe 912 — Colombo · CF912/CMB/01</p>
+                        </div>
+                        <button class="reg-btn" data-goto="addcust">+ Register Member</button>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-6 col-lg-3"><div class="stat-card" style="border-color:#E8611A;color:#E8611A"><div class="stat-lbl">Total Customers</div><div class="stat-val">19</div><div class="stat-sub">+2 this week</div></div></div>
+                        <div class="col-6 col-lg-3"><div class="stat-card" style="border-color:#E8611A;color:#E8611A"><div class="stat-lbl">Today's Sales</div><div class="stat-val">LKR 4,850</div><div class="stat-sub">12 orders</div></div></div>
+                        <div class="col-6 col-lg-3"><div class="stat-card" style="border-color:#7ddc8a;color:#7ddc8a"><div class="stat-lbl">Points Pool</div><div class="stat-val">233 pts</div><div class="stat-sub">Active members</div></div></div>
+                        <div class="col-6 col-lg-3"><div class="stat-card"><div class="stat-lbl">Menu Items</div><div class="stat-val">24</div><div class="stat-sub">3 categories</div></div></div>
+                    </div>
+
+                    <div class="batch-banner mb-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="play-btn"><div class="play-tri"></div></div>
+                            <div>
+                                <div style="color:#7ddc8a;font-weight:500;font-size:14px">No active batch</div>
+                                <div style="color:#7ddc8a;opacity:0.55;font-size:11px;margin-top:2px">Tap to start a new batch</div>
+                            </div>
+                        </div>
+                        <i class="bi bi-chevron-right" style="color:#7ddc8a;opacity:0.5"></i>
+                    </div>
+
+                    <div class="sec-hd mb-2"><div class="acc"></div>Quick Actions</div>
+                    <div class="row g-2 mb-4">
+                        <div class="col-6 col-md-4 col-lg-2"><div class="qc pri" data-goto="sale"><div class="qc-ico">🧾</div><div class="qc-lbl">Record Sale</div><div class="qc-sub">Add a new sale</div></div></div>
+                        <div class="col-6 col-md-4 col-lg-2"><div class="qc" data-goto="custs"><div class="qc-ico">👥</div><div class="qc-lbl">Customers</div><div class="qc-sub">View all members</div></div></div>
+                        <div class="col-6 col-md-4 col-lg-2"><div class="qc" data-goto="orders"><div class="qc-ico">📊</div><div class="qc-lbl">Sales History</div><div class="qc-sub">View last orders</div></div></div>
+                        <div class="col-6 col-md-4 col-lg-2"><div class="qc" data-goto="items"><div class="qc-ico">☕</div><div class="qc-lbl">Menu Items</div><div class="qc-sub">Manage items</div></div></div>
+                        <div class="col-6 col-md-4 col-lg-2"><div class="qc" data-goto="addcust"><div class="qc-ico">➕</div><div class="qc-lbl">Register</div><div class="qc-sub">New member</div></div></div>
+                        <div class="col-6 col-md-4 col-lg-2"><div class="qc" data-goto="settings"><div class="qc-ico">⚙️</div><div class="qc-lbl">Settings</div><div class="qc-sub">Shop config</div></div></div>
+                    </div>
+
+                    <div class="sec-hd mb-2"><div class="acc"></div>Recent Customer List</div>
+                    <div class="mem-list">
+                        <div class="mem-row"><div class="mem-av">K<div class="online-dot"></div></div><div class="mem-info"><div class="mem-nm">Krishantha <span class="chip chip-or" style="font-size:10px;background:#E8611A;color:white">new</span></div><div class="mem-ph">0761005334</div></div><div class="mem-pts">⭐ 9</div></div>
+                        <div class="mem-row"><div class="mem-av">S</div><div class="mem-info"><div class="mem-nm">Samantha Perera</div><div class="mem-ph">0771234567</div></div><div class="mem-pts">⭐ 45</div></div>
+                        <div class="mem-row"><div class="mem-av">R</div><div class="mem-info"><div class="mem-nm">Ravindu Silva</div><div class="mem-ph">0712345678</div></div><div class="mem-pts">⭐ 120</div></div>
+                        <div class="mem-row"><div class="mem-av">N</div><div class="mem-info"><div class="mem-nm">Nadeesha Fernando</div><div class="mem-ph">0751234567</div></div><div class="mem-pts">⭐ 59</div></div>
+                        <div class="mem-row"><div class="mem-av">C</div><div class="mem-info"><div class="mem-nm">Chathura Bandara</div><div class="mem-ph">0763344556</div></div><div class="mem-pts">⭐ 88</div></div>
+                    </div>
+                </div>
+
+                <!-- ── RECORD SALE ── -->
+                <div class="page" id="p-sale">
+                    <div class="page-header">
+                        <h1 class="page-title">Record Sale</h1>
+                        <button class="btn-or" onclick="showToast('Order started!')"><i class="bi bi-plus-lg"></i> New Order</button>
+                    </div>
+                    <div class="row g-3">
+                        <!-- Menu -->
+                        <div class="col-12 col-lg-8">
+                            <div class="c-card">
+                                <div class="cat-tabs" id="cat-tabs">
+                                    <div class="ct active" data-cat="all">All</div>
+                                    <div class="ct" data-cat="hot">Hot Drinks</div>
+                                    <div class="ct" data-cat="cold">Cold Drinks</div>
+                                    <div class="ct" data-cat="food">Food</div>
+                                    <div class="ct" data-cat="dessert">Desserts</div>
+                                </div>
+                                <div class="row g-2" id="menu-grid">
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Espresso',280)"><div class="mi-ico">☕</div><div class="mi-nm">Espresso</div><div class="mi-pr">LKR 280</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Cappuccino',380)"><div class="mi-ico">🍵</div><div class="mi-nm">Cappuccino</div><div class="mi-pr">LKR 380</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Latte',400)"><div class="mi-ico">☕</div><div class="mi-nm">Latte</div><div class="mi-pr">LKR 400</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Cold Brew',450)"><div class="mi-ico">🧊</div><div class="mi-nm">Cold Brew</div><div class="mi-pr">LKR 450</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Iced Latte',480)"><div class="mi-ico">🥤</div><div class="mi-nm">Iced Latte</div><div class="mi-pr">LKR 480</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Croissant',320)"><div class="mi-ico">🥐</div><div class="mi-nm">Croissant</div><div class="mi-pr">LKR 320</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Mocha',420)"><div class="mi-ico">☕</div><div class="mi-nm">Mocha</div><div class="mi-pr">LKR 420</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Sandwich',420)"><div class="mi-ico">🥪</div><div class="mi-nm">Sandwich</div><div class="mi-pr">LKR 420</div></div></div>
+                                    <div class="col-6 col-sm-4 col-xl-3"><div class="mi" onclick="addItem('Choco Cake',550)"><div class="mi-ico">🍰</div><div class="mi-nm">Choco Cake</div><div class="mi-pr">LKR 550</div></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Panel -->
+                        <div class="col-12 col-lg-4">
+                            <div class="order-panel">
+                                <div class="op-hd">Current Order</div>
+                                <div class="op-sub" id="oi-cnt">0 items</div>
+                                <div class="cust-sel"><span>👤 Select customer (optional)</span><i class="bi bi-chevron-down" style="color:#7a5830"></i></div>
+                                <div class="oi-list" id="oi-list">
+                                    <div class="empty-cart"><div class="empty-ico">🛒</div><div style="font-size:13px">No items yet</div><div style="font-size:11px;margin-top:3px">Tap a menu item</div></div>
+                                </div>
+                                <hr style="border-color:#3d2010;margin:10px 0">
+                                <div class="sumrow"><span>Subtotal</span><span id="o-sub">LKR 0</span></div>
+                                <div class="sumrow"><span>Service (10%)</span><span id="o-svc">LKR 0</span></div>
+                                <div class="sumrow big"><span>Total</span><span id="o-tot">LKR 0</span></div>
+                                <button class="pay-btn" onclick="pay()">Process Payment</button>
+                                <button class="clr-btn" onclick="clrOrder()">Clear Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── ITEM MANAGEMENT ── -->
+                <div class="page" id="p-items">
+                    <div class="page-header">
+                        <h1 class="page-title">Item Management</h1>
+                        <button class="btn-ghost" data-goto="additem"><i class="bi bi-plus-lg"></i> Add Item</button>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <div class="search-box"><i class="bi bi-search" style="color:#7a5830"></i><input placeholder="Search items..."></div>
+                        <select class="fsel-filter"><option>All Categories</option><option>Hot Drinks</option><option>Cold Drinks</option><option>Food</option><option>Desserts</option></select>
+                    </div>
+                    <div class="sec-hd mb-2"><div class="acc"></div>View Items · 24 items</div>
+                    <div class="row g-3">
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">☕</div><div class="ig-nm">Espresso</div><div class="ig-pr">LKR 280</div><div class="ig-cat">Hot Drinks</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">🍵</div><div class="ig-nm">Cappuccino</div><div class="ig-pr">LKR 380</div><div class="ig-cat">Hot Drinks</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">☕</div><div class="ig-nm">Latte</div><div class="ig-pr">LKR 400</div><div class="ig-cat">Hot Drinks</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">☕</div><div class="ig-nm">Mocha</div><div class="ig-pr">LKR 420</div><div class="ig-cat">Hot Drinks</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">🧊</div><div class="ig-nm">Cold Brew</div><div class="ig-pr">LKR 450</div><div class="ig-cat">Cold Drinks</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">🥤</div><div class="ig-nm">Iced Latte</div><div class="ig-pr">LKR 480</div><div class="ig-cat">Cold Drinks</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">🥐</div><div class="ig-nm">Croissant</div><div class="ig-pr">LKR 320</div><div class="ig-cat">Food</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                        <div class="col-6 col-sm-4 col-lg-3"><div class="ig-card"><div class="ig-ico">🥪</div><div class="ig-nm">Sandwich</div><div class="ig-pr">LKR 420</div><div class="ig-cat">Food</div><div class="ig-acts"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></div></div>
+                    </div>
+                </div>
+
+                <!-- ── ADD ITEM ── -->
+                <div class="page" id="p-additem">
+                    <div class="page-header">
+                        <h1 class="page-title">Add New Item</h1>
+                        <button class="btn-ghost" data-goto="items"><i class="bi bi-arrow-left"></i> Back to Items</button>
+                    </div>
+                    <div class="c-card">
+                        <div class="sec-hd mb-3"><div class="acc"></div>Item Details</div>
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6"><label class="flbl">Item Name</label><input class="finput" placeholder="e.g. Caramel Latte"></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Price (LKR)</label><input class="finput" placeholder="e.g. 450" type="number"></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Category</label><select class="fsel2"><option value="">Select category</option><option>Hot Drinks</option><option>Cold Drinks</option><option>Food</option><option>Desserts</option></select></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Item Code</label><input class="finput" placeholder="e.g. HD-005"></div>
+                            <div class="col-12"><label class="flbl">Description</label><textarea class="ftextarea" placeholder="Short description of the item..."></textarea></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Available Stock</label><input class="finput" placeholder="e.g. 50" type="number"></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Status</label><select class="fsel2"><option>Available</option><option>Out of Stock</option><option>Hidden</option></select></div>
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                            <button class="btn-or" onclick="showToast('Item added successfully!')"><i class="bi bi-check-lg"></i> Save Item</button>
+                            <button class="btn-ghost">Clear Form</button>
+                        </div>
+                    </div>
+
+                    <div class="sec-hd mt-4 mb-2"><div class="acc"></div>Update / Delete Item</div>
+                    <div class="c-table">
+                        <table>
+                            <thead><tr><th>Item</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
+                            <tbody>
+                            <tr><td class="nm">Espresso</td><td>Hot Drinks</td><td class="hi">LKR 280</td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">Available</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></td></tr>
+                            <tr><td class="nm">Cappuccino</td><td>Hot Drinks</td><td class="hi">LKR 380</td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">Available</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></td></tr>
+                            <tr><td class="nm">Cold Brew</td><td>Cold Drinks</td><td class="hi">LKR 450</td><td><span class="chip chip-rd" style="background:#5c1a1a;color:#f08080">Out of Stock</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ── CUSTOMER MANAGEMENT ── -->
+                <div class="page" id="p-custs">
+                    <div class="page-header">
+                        <h1 class="page-title">Customer Management</h1>
+                        <button class="btn-or" data-goto="addcust"><i class="bi bi-person-plus"></i> Add Customer</button>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-12 col-sm-4"><div class="stat-card" style="border-color:#E8611A;color:#E8611A"><div class="stat-lbl">Total Customers</div><div class="stat-val">19</div><div class="stat-sub">All registered</div></div></div>
+                        <div class="col-12 col-sm-4"><div class="stat-card" style="border-color:#7ddc8a;color:#7ddc8a"><div class="stat-lbl">Points Pool</div><div class="stat-val">233</div><div class="stat-sub">Total active points</div></div></div>
+                        <div class="col-12 col-sm-4"><div class="stat-card"><div class="stat-lbl">New This Month</div><div class="stat-val">4</div><div class="stat-sub">Recent signups</div></div></div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <div class="search-box"><i class="bi bi-search" style="color:#7a5830"></i><input placeholder="Search customers..."></div>
+                        <select class="fsel-filter"><option>All Status</option><option>Active</option><option>New</option></select>
+                    </div>
+                    <div class="c-table">
+                        <table>
+                            <thead><tr><th>#</th><th>Customer Name</th><th>Phone</th><th>Member ID</th><th>Points</th><th>Status</th><th>Actions</th></tr></thead>
+                            <tbody>
+                            <tr><td style="color:#7a5830">01</td><td class="nm">Krishantha</td><td>0761005334</td><td style="font-family:monospace;color:#E8611A">CF912-001</td><td><span class="chip chip-or" style="background:#E8611A;color:white">⭐ 9</span></td><td><span class="chip chip-or" style="background:#E8611A;color:white">New</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-vw">View</span><span class="ab ab-dl">Del</span></div></td></tr>
+                            <tr><td style="color:#7a5830">02</td><td class="nm">Samantha Perera</td><td>0771234567</td><td style="font-family:monospace;color:#E8611A">CF912-002</td><td><span class="chip chip-or" style="background:#E8611A;color:white">⭐ 45</span></td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">Active</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-vw">View</span><span class="ab ab-dl">Del</span></div></td></tr>
+                            <tr><td style="color:#7a5830">03</td><td class="nm">Ravindu Silva</td><td>0712345678</td><td style="font-family:monospace;color:#E8611A">CF912-003</td><td><span class="chip chip-or" style="background:#E8611A;color:white">⭐ 120</span></td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">Active</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-vw">View</span><span class="ab ab-dl">Del</span></div></td></tr>
+                            <tr><td style="color:#7a5830">04</td><td class="nm">Nadeesha Fernando</td><td>0751234567</td><td style="font-family:monospace;color:#E8611A">CF912-004</td><td><span class="chip chip-or" style="background:#E8611A;color:white">⭐ 59</span></td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">Active</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-vw">View</span><span class="ab ab-dl">Del</span></div></td></tr>
+                            <tr><td style="color:#7a5830">05</td><td class="nm">Chathura Bandara</td><td>0763344556</td><td style="font-family:monospace;color:#E8611A">CF912-005</td><td><span class="chip chip-or" style="background:#E8611A;color:white">⭐ 88</span></td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">Active</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-vw">View</span><span class="ab ab-dl">Del</span></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ── ADD CUSTOMER ── -->
+                <div class="page" id="p-addcust">
+                    <div class="page-header">
+                        <h1 class="page-title">Add / Register Customer</h1>
+                        <button class="btn-ghost" data-goto="custs"><i class="bi bi-arrow-left"></i> Back to Customers</button>
+                    </div>
+                    <div class="c-card">
+                        <div class="sec-hd mb-3"><div class="acc"></div>Customer Details</div>
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6"><label class="flbl">Full Name</label><input class="finput" placeholder="e.g. Krishantha Perera"></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Phone Number</label><input class="finput" placeholder="e.g. 0761234567" type="tel"></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Email Address</label><input class="finput" placeholder="e.g. name@email.com" type="email"></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Date of Birth</label><input class="finput" type="date"></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Gender</label><select class="fsel2"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+                            <div class="col-12 col-sm-6"><label class="flbl">Membership Type</label><select class="fsel2"><option>Standard</option><option>Gold</option><option>Platinum</option></select></div>
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                            <button class="btn-or" onclick="showToast('Customer registered successfully!')"><i class="bi bi-check-lg"></i> Register Customer</button>
+                            <button class="btn-ghost">Clear Form</button>
+                        </div>
+                    </div>
+
+                    <div class="sec-hd mt-4 mb-2"><div class="acc"></div>Update / Delete Customer</div>
+                    <div class="c-table">
+                        <table>
+                            <thead><tr><th>Name</th><th>Phone</th><th>Member ID</th><th>Points</th><th>Actions</th></tr></thead>
+                            <tbody>
+                            <tr><td class="nm">Krishantha</td><td>0761005334</td><td style="font-family:monospace;color:#E8611A">CF912-001</td><td><span class="chip chip-or" style="background:#E8611A;color:white">⭐ 9</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></td></tr>
+                            <tr><td class="nm">Samantha Perera</td><td>0771234567</td><td style="font-family:monospace;color:#E8611A">CF912-002</td><td><span class="chip chip-or" style="background:#E8611A;color:white">⭐ 45</span></td><td><div class="d-flex gap-1"><span class="ab ab-ed">Edit</span><span class="ab ab-dl">Delete</span></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ── ORDER MANAGEMENT ── -->
+                <div class="page" id="p-orders">
+                    <div class="page-header">
+                        <h1 class="page-title">Order Management</h1>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <select class="fsel-filter"><option>Today</option><option>This Week</option><option>This Month</option></select>
+                            <button class="btn-ghost"><i class="bi bi-download"></i> Export</button>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6 col-lg-3"><div class="stat-card" style="border-color:#E8611A;color:#E8611A"><div class="stat-lbl">Today Revenue</div><div class="stat-val">LKR 4,850</div><div class="stat-sub">12 orders</div></div></div>
+                        <div class="col-6 col-lg-3"><div class="stat-card"><div class="stat-lbl">Avg Order Value</div><div class="stat-val">LKR 404</div><div class="stat-sub">Per transaction</div></div></div>
+                        <div class="col-6 col-lg-3"><div class="stat-card" style="border-color:#7ddc8a;color:#7ddc8a"><div class="stat-lbl">Points Awarded</div><div class="stat-val">48 pts</div><div class="stat-sub">Today total</div></div></div>
+                        <div class="col-6 col-lg-3"><div class="stat-card"><div class="stat-lbl">Walk-in Orders</div><div class="stat-val">5</div><div class="stat-sub">No member</div></div></div>
+                    </div>
+
+                    <div class="sec-hd mb-2"><div class="acc"></div>View Last Orders</div>
+                    <div class="c-table mb-3">
+                        <table>
+                            <thead><tr><th>Order ID</th><th>Customer</th><th>Date & Time</th><th>Items</th><th>Total</th><th>Points</th><th>Action</th></tr></thead>
+                            <tbody>
+                            <tr class="order-row" data-id="CF912-0041" data-cust="Ravindu Silva" data-dt="23 Apr 22:15" data-items='["Cappuccino x1 — LKR 380","Croissant x1 — LKR 320"]' data-total="LKR 726" data-pts="+7"><td style="font-family:monospace;color:#E8611A">#0041</td><td class="nm">Ravindu Silva</td><td>23 Apr, 22:15</td><td>2 items</td><td class="hi">LKR 726</td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">+7</span></td><td><span class="ab ab-vw">View</span></td></tr>
+                            <tr class="order-row" data-id="CF912-0040" data-cust="Walk-in" data-dt="23 Apr 21:42" data-items='["Espresso x1 — LKR 280"]' data-total="LKR 308" data-pts="—"><td style="font-family:monospace;color:#E8611A">#0040</td><td class="nm">Walk-in</td><td>23 Apr, 21:42</td><td>1 item</td><td class="hi">LKR 308</td><td><span style="color:#7a5830">—</span></td><td><span class="ab ab-vw">View</span></td></tr>
+                            <tr class="order-row" data-id="CF912-0039" data-cust="Samantha P." data-dt="23 Apr 20:58" data-items='["Latte x1 — LKR 400","Cold Brew x1 — LKR 450","Sandwich x1 — LKR 420"]' data-total="LKR 1,397" data-pts="+12"><td style="font-family:monospace;color:#E8611A">#0039</td><td class="nm">Samantha P.</td><td>23 Apr, 20:58</td><td>3 items</td><td class="hi">LKR 1,397</td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">+12</span></td><td><span class="ab ab-vw">View</span></td></tr>
+                            <tr class="order-row" data-id="CF912-0038" data-cust="Krishantha" data-dt="23 Apr 19:30" data-items='["Mocha x1 — LKR 420","Choco Cake x1 — LKR 550"]' data-total="LKR 1,067" data-pts="+9"><td style="font-family:monospace;color:#E8611A">#0038</td><td class="nm">Krishantha</td><td>23 Apr, 19:30</td><td>2 items</td><td class="hi">LKR 1,067</td><td><span class="chip chip-gn" style="background:#7ddc8a;color:#0f0a06">+9</span></td><td><span class="ab ab-vw">View</span></td></tr>
+                            <tr class="order-row" data-id="CF912-0037" data-cust="Walk-in" data-dt="23 Apr 18:05" data-items='["Espresso x1 — LKR 280"]' data-total="LKR 308" data-pts="—"><td style="font-family:monospace;color:#E8611A">#0037</td><td class="nm">Walk-in</td><td>23 Apr, 18:05</td><td>1 item</td><td class="hi">LKR 308</td><td><span style="color:#7a5830">—</span></td><td><span class="ab ab-vw">View</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="order-detail" id="od-panel">
+                        <div class="d-flex align-items-start justify-content-between flex-wrap gap-2 mb-3">
+                            <div>
+                                <div class="od-id" id="od-id"></div>
+                                <div style="font-size:12px;color:#7a5830;margin-top:2px" id="od-meta"></div>
+                            </div>
+                            <div class="d-flex gap-2 align-items-center flex-wrap">
+                                <span class="chip chip-gn" id="od-pts"></span>
+                                <button class="btn-ghost" id="od-close">Close</button>
+                                <button class="btn-or"><i class="bi bi-printer"></i> Print Receipt</button>
+                            </div>
+                        </div>
+                        <div class="sec-hd mb-2"><div class="acc"></div>View Items in Order</div>
+                        <div class="od-items" id="od-items"></div>
+                        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+                            <div>
+                                <div style="font-size:12px;color:#7a5830">Customer</div>
+                                <div style="font-size:13px;color:#c4a882;margin-top:2px" id="od-cust"></div>
+                            </div>
+                            <div style="font-size:15px;font-weight:600;color:#f5e8d8">
+                                Total: <span id="od-total" style="color:#E8611A;margin-left:8px"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     </section>
+
 </main>
 
 
