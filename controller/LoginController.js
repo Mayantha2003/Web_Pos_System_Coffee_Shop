@@ -1,11 +1,11 @@
 import { findUserData, getUserData }            from '../model/LoginModel.js';
-import { getSettingsData, updateSettingsData }  from '../model/SettingsModel.js';
+import { getSettingsData, updateSettingsData }  from '../model/Settingsmodel.js';
 import { getTodayOrderData }                     from '../model/OrderModel.js';
 import { getCustomerData }                       from '../model/CustomerModel.js';
 import { getItemData }                           from '../model/ItemModel.js';
 import { check_username, check_password }        from '../utils/validation.js';
 import { loadDashboardOrders, loadOrdersTbl }    from './OrderController.js';
-import { loadItemsGrid, loadMenuGrid }           from './itemController.js';
+import { loadItemsGrid, loadMenuGrid }           from './ItemController.js';
 import { loadCustomerTbl, populateCustomerSelect } from './CustomerController.js';
 import { loadCartPanel }                         from './SaleController.js';
 
