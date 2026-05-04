@@ -4,10 +4,10 @@ import { getTodayOrderData }                     from '../model/OrderModel.js';
 import { getCustomerData }                       from '../model/CustomerModel.js';
 import { getItemData }                           from '../model/ItemModel.js';
 import { check_username, check_password }        from '../utils/validation.js';
-// import { loadDashboardOrders, loadOrdersTbl }    from './OrderController.js';
-// import { loadItemsGrid, loadMenuGrid }           from './itemController.js';
+import { loadDashboardOrders, loadOrdersTbl }    from './OrderController.js';
+import { loadItemsGrid, loadMenuGrid }           from './itemController.js';
 import { loadCustomerTbl, populateCustomerSelect } from './CustomerController.js';
-// import { loadCartPanel }                         from './SaleController.js';
+import { loadCartPanel }                         from './SaleController.js';
 
 
 // --------------------------- Sign In Button ---------------------------

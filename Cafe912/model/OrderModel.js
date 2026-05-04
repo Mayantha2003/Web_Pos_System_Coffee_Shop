@@ -1,5 +1,4 @@
-import { order_db, settings_db } from '../db/db.js';
-import * as DB from '../db/db.js';
+import { order_db } from '../db/db.js';
 import { addCustomerPoints } from './CustomerModel.js';
 
 // -------------------- Order Class ---------------------------
@@ -38,38 +37,35 @@ class Order {
     set date(v)       { this.#date = v; }
     set total(v)      { this.#total = v; }
 }
+// ---------Id Generate--------- //
+const getNextOrderId = () => {
+    if (!order_db.length) return 'ORD-001';
+    let nums = order_db.map(o => parseInt(o.id.replace('ORD-', '')) || 0);
+    return 'ORD-' + String(Math.max(...nums) + 1).padStart(3, '0');
+};
 
-// --------------------------- Add Order (Create) ---------------------------
+// --------------------------- Add Order ---------------------------
 const addOrderData = (ocustomerId, otype, oitems) => {
-    let sub   = oitems.reduce((s, i) => s + i.price * i.qty, 0);
-    let svc   = Math.round(sub * (settings_db.serviceCharge / 100));
-    let total = sub + svc;
-    let id    = 'ORD-' + String(DB.next_order_id++).padStart(3, '0');
+    let total = oitems.reduce((s, i) => s + i.price * i.qty, 0);
+    let id    = getNextOrderId();
     let date  = new Date().toISOString().slice(0, 16).replace('T', ' ');
 
     let new_order = new Order(id, ocustomerId || null, otype, oitems, 'completed', date, total);
     order_db.push(new_order);
 
-    // Give loyalty points to the customer
     if (ocustomerId) addCustomerPoints(ocustomerId, total);
 
     return new_order;
 };
 
 // --------------------------- Get All Orders ---------------------------
-const getOrderData = () => {
-    return [...order_db].reverse();
-};
+const getOrderData = () => [...order_db].reverse();
 
 // --------------------------- Get Order by Id ---------------------------
-const getOrderDataById = (oid) => {
-    return order_db.find(item => item.id === oid);
-};
+const getOrderDataById = (oid) => order_db.find(item => item.id === oid);
 
 // --------------------------- Get Recent N Orders ---------------------------
-const getRecentOrderData = (n) => {
-    return [...order_db].slice(-n).reverse();
-};
+const getRecentOrderData = (n) => [...order_db].slice(-n).reverse();
 
 // --------------------------- Get Today's Orders ---------------------------
 const getTodayOrderData = () => {
@@ -86,11 +82,11 @@ const searchOrderData = (query, getCustomerDataById) => {
     }).reverse();
 };
 
-// --------------------------- Calculate Totals ---------------------------
+// --------------------------- Calculate Total ---------------------------
 const calculateOrderTotal = (items) => {
-    let sub   = items.reduce((s, i) => s + i.price * i.qty, 0);
-    let svc   = Math.round(sub * (settings_db.serviceCharge / 100));
-    return { sub, svc, total: sub + svc };
+    let total = items.reduce((s, i) => s + i.price * i.qty, 0);
+    return { total };
 };
 
-export { addOrderData, getOrderData, getOrderDataById, getRecentOrderData, getTodayOrderData, searchOrderData, calculateOrderTotal };
+export { addOrderData, getOrderData, getOrderDataById, getRecentOrderData,
+    getTodayOrderData, searchOrderData, calculateOrderTotal };

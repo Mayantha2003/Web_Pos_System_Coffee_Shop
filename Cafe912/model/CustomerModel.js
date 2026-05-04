@@ -1,5 +1,4 @@
 import { customer_db, settings_db } from '../db/db.js';
-import * as DB from '../db/db.js';
 
 // -------------------- Customer Class ------------------------
 class Customer {
@@ -34,9 +33,13 @@ class Customer {
     set orders(v) { this.#orders = v; }
 }
 
+// ✅ Generate next ID dynamically from existing DB
+const getNextId = () =>
+    customer_db.length ? Math.max(...customer_db.map(c => c.id)) + 1 : 1;
+
 // --------------------------- Add Customer ---------------------------
 const addCustomerData = (cname, cphone, cemail) => {
-    let new_customer = new Customer(DB.next_customer_id++, cname, cphone, cemail, 0, 0);
+    let new_customer = new Customer(getNextId(), cname, cphone, cemail, 0, 0);
     customer_db.push(new_customer);
 };
 
@@ -59,26 +62,20 @@ const deleteCustomerData = (cid) => {
 };
 
 // --------------------------- Get All Customers ---------------------------
-const getCustomerData = () => {
-    return customer_db;
-};
+const getCustomerData = () => customer_db;
 
 // --------------------------- Get Customer by Index ---------------------------
-const getCustomerDataByIndex = (index) => {
-    return customer_db[index];
-};
+const getCustomerDataByIndex = (index) => customer_db[index];
 
 // --------------------------- Get Customer by Id ---------------------------
-const getCustomerDataById = (cid) => {
-    return customer_db.find(item => item.id === cid);
-};
+const getCustomerDataById = (cid) => customer_db.find(item => item.id === cid);
 
 // --------------------------- Search Customers ---------------------------
 const searchCustomerData = (query) => {
     let q = query.toLowerCase();
     return customer_db.filter(item =>
-        item.name.toLowerCase().includes(q)  ||
-        item.phone.includes(q)               ||
+        item.name.toLowerCase().includes(q) ||
+        item.phone.includes(q)              ||
         item.email.toLowerCase().includes(q)
     );
 };
@@ -92,4 +89,5 @@ const addCustomerPoints = (cid, orderTotal) => {
     }
 };
 
-export { addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData, getCustomerDataByIndex, getCustomerDataById, searchCustomerData, addCustomerPoints };
+export { addCustomerData, updateCustomerData, deleteCustomerData, getCustomerData,
+    getCustomerDataByIndex, getCustomerDataById, searchCustomerData, addCustomerPoints };

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAFE 912 — Web POS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles/style.css">
 </head>
@@ -107,7 +108,7 @@
         <!-- MAIN CONTENT -->
         <div id="main-content">
 
-            <!-- ── PAGE: DASHBOARD ── -->
+            <!-- DASHBOARD -->
             <div class="page active" id="p-dash">
                 <div class="greet-banner">
                     <div>
@@ -174,10 +175,10 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- /dash -->
+            </div>
 
 
-            <!-- ── PAGE: RECORD SALE ── -->
+            <!-- RECORD SALE -->
             <div class="page" id="p-sale">
                 <div class="page-header">
                     <h1 class="page-title"><i class="bi bi-bag-plus me-2"></i>Record Sale</h1>
@@ -190,7 +191,7 @@
                                 <div class="ct" data-cat="Coffee">Coffee</div>
                                 <div class="ct" data-cat="Tea">Tea</div>
                                 <div class="ct" data-cat="Food">Food</div>
-                                <div class="ct" data-cat="Cold">Cold Drinks</div>
+                                <div class="ct" data-cat="Cold Drinks">Cold Drinks</div>
                             </div>
                             <div id="sale-search-wrap" class="mb-3">
                                 <div class="search-box">
@@ -201,6 +202,8 @@
                             <div class="row g-2" id="menu-grid"></div>
                         </div>
                     </div>
+
+                    <!-- ORDER PANEL -->
                     <div class="col-lg-4">
                         <div class="order-panel">
                             <div class="op-hd">Current Order</div>
@@ -227,25 +230,36 @@
                                 </div>
                             </div>
 
+                            <!-- ✅ Total only, service charge removed -->
                             <div style="border-top:1px solid rgba(200,140,80,0.14);padding-top:10px;margin-top:10px">
-                                <div class="sumrow"><span>Subtotal</span><span id="o-sub">LKR 0</span></div>
-                                <div class="sumrow"><span>Service (10%)</span><span id="o-svc">LKR 0</span></div>
                                 <div class="sumrow big"><span>Total</span><span id="o-tot">LKR 0</span></div>
                             </div>
 
-                            <button class="pay-btn" id="pay-btn" onclick="SaleController.pay()">
+                            <!-- ✅ Cash input -->
+                            <div id="cash-input-row" style="display:none;margin-top:10px">
+                                <label style="color:#c4a882;font-size:13px">Cash Given (LKR)</label>
+                                <input id="o-cash" type="number" class="finput w-100 mt-1" placeholder="Enter cash amount">
+                            </div>
+
+                            <!-- ✅ Balance output -->
+                            <div id="balance-row" style="display:none;justify-content:space-between;margin-top:8px;font-weight:700;font-size:15px">
+                                <span style="color:#c4a882">Balance</span>
+                                <span id="o-balance">LKR 0</span>
+                            </div>
+
+                            <button class="pay-btn" id="pay-btn">
                                 <i class="bi bi-credit-card me-1"></i> Process Payment
                             </button>
-                            <button class="clr-btn" onclick="SaleController.clearOrder()">
+                            <button class="clr-btn" id="clear-btn">
                                 <i class="bi bi-trash me-1"></i> Clear Order
                             </button>
                         </div>
                     </div>
                 </div>
-            </div><!-- /sale -->
+            </div>
 
 
-            <!-- ── PAGE: ORDERS ── -->
+            <!-- ORDERS -->
             <div class="page" id="p-orders">
                 <div class="page-header">
                     <h1 class="page-title"><i class="bi bi-receipt me-2"></i>Orders</h1>
@@ -262,6 +276,7 @@
                         <tbody id="orders-table"></tbody>
                     </table>
                 </div>
+
                 <!-- Order Detail Panel -->
                 <div id="od-panel" class="c-card" style="margin-top:14px;display:none">
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
@@ -286,10 +301,10 @@
                         <div id="od-items"></div>
                     </div>
                 </div>
-            </div><!-- /orders -->
+            </div>
 
 
-            <!-- ── PAGE: MENU ITEMS ── -->
+            <!-- MENU ITEMS -->
             <div class="page" id="p-items">
                 <div class="page-header">
                     <h1 class="page-title"><i class="bi bi-grid me-2"></i>Menu Items</h1>
@@ -302,14 +317,17 @@
                     </div>
                     <select class="fsel" id="items-cat-filter" style="width:auto">
                         <option value="">All Categories</option>
-                        <option>Coffee</option><option>Tea</option><option>Food</option><option>Cold Drinks</option>
+                        <option>Coffee</option>
+                        <option>Tea</option>
+                        <option>Food</option>
+                        <option>Cold Drinks</option>
                     </select>
                 </div>
                 <div class="row g-3" id="items-grid"></div>
-            </div><!-- /items -->
+            </div>
 
 
-            <!-- ── PAGE: CUSTOMERS ── -->
+            <!-- CUSTOMERS -->
             <div class="page" id="p-customers">
                 <div class="page-header">
                     <h1 class="page-title"><i class="bi bi-people me-2"></i>Customers</h1>
@@ -332,7 +350,7 @@
             </div>
 
 
-            <!-- ── PAGE: SETTINGS ── -->
+            <!-- SETTINGS -->
             <div class="page" id="p-settings">
                 <div class="page-header">
                     <h1 class="page-title"><i class="bi bi-gear me-2"></i>Settings</h1>
@@ -351,11 +369,10 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- /settings -->
+            </div>
 
         </div>
     </div>
-
 
     <!-- TOAST CONTAINER -->
     <div id="toast-container"></div>
@@ -373,7 +390,6 @@
 <script type="module" src="controller/OrderController.js"></script>
 <script type="module" src="controller/SaleController.js"></script>
 <script type="module" src="controller/LoginController.js"></script>
-
 
 </body>
 </html>

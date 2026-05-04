@@ -7,21 +7,21 @@ let user_db = [
 
 // ------------------------ Menu Item DB -----------------------
 let item_db = [
-    { id: 1,  name: 'Espresso',       price: 350, category: 'Coffee', emoji: '☕', active: true },
-    { id: 2,  name: 'Cappuccino',     price: 480, category: 'Coffee', emoji: '☕', active: true },
-    { id: 3,  name: 'Latte',          price: 520, category: 'Coffee', emoji: '🍵', active: true },
-    { id: 4,  name: 'Flat White',     price: 490, category: 'Coffee', emoji: '☕', active: true },
-    { id: 5,  name: 'Cold Brew',      price: 580, category: 'Cold',   emoji: '🧊', active: true },
-    { id: 6,  name: 'Iced Latte',     price: 560, category: 'Cold',   emoji: '🧊', active: true },
-    { id: 7,  name: 'Green Tea',      price: 320, category: 'Tea',    emoji: '🍵', active: true },
-    { id: 8,  name: 'Masala Chai',    price: 360, category: 'Tea',    emoji: '🍵', active: true },
-    { id: 9,  name: 'Croissant',      price: 290, category: 'Food',   emoji: '🥐', active: true },
-    { id: 10, name: 'Banana Bread',   price: 350, category: 'Food',   emoji: '🍞', active: true },
-    { id: 11, name: 'Club Sandwich',  price: 780, category: 'Food',   emoji: '🥪', active: true },
-    { id: 12, name: 'Chocolate Cake', price: 420, category: 'Food',   emoji: '🎂', active: true },
-    { id: 13, name: 'Mocha',          price: 540, category: 'Coffee', emoji: '☕', active: true },
-    { id: 14, name: 'Americano',      price: 380, category: 'Coffee', emoji: '☕', active: true },
-    { id: 15, name: 'Mango Smoothie', price: 650, category: 'Cold',   emoji: '🥭', active: true },
+    { id: 1,  name: 'Espresso',       price: 350, category: 'Coffee', active: true },
+    { id: 2,  name: 'Cappuccino',     price: 480, category: 'Coffee', active: true },
+    { id: 3,  name: 'Latte',          price: 520, category: 'Coffee', active: true },
+    { id: 4,  name: 'Flat White',     price: 490, category: 'Coffee', active: true },
+    { id: 5,  name: 'Cold Brew',      price: 580, category: 'Cold',   active: true },
+    { id: 6,  name: 'Iced Latte',     price: 560, category: 'Cold',   active: true },
+    { id: 7,  name: 'Green Tea',      price: 320, category: 'Tea',    active: true },
+    { id: 8,  name: 'Masala Chai',    price: 360, category: 'Tea',    active: true },
+    { id: 9,  name: 'Croissant',      price: 290, category: 'Food',   active: true },
+    { id: 10, name: 'Banana Bread',   price: 350, category: 'Food',   active: true },
+    { id: 11, name: 'Club Sandwich',  price: 780, category: 'Food',   active: true },
+    { id: 12, name: 'Chocolate Cake', price: 420, category: 'Food',   active: true },
+    { id: 13, name: 'Mocha',          price: 540, category: 'Coffee', active: true },
+    { id: 14, name: 'Americano',      price: 380, category: 'Coffee', active: true },
+    { id: 15, name: 'Mango Smoothie', price: 650, category: 'Cold',   active: true },
 ];
 
 // ------------------------ Customer DB ------------------------
@@ -33,12 +33,11 @@ let customer_db = [
     { id: 5, name: 'Dilini Rathnayake', phone: '0745678901', email: 'dilini@email.com', points: 510, orders: 17 },
 ];
 
-// ------------------------ Order DB ---------------------------
 let order_db = [
-    { id: 'ORD-001', customerId: 1, type: 'dine-in',  items: [{name:'Cappuccino',qty:2,price:480},{name:'Croissant',qty:1,price:290}], status:'completed', date:'2025-05-02 09:14', total:1397 },
-    { id: 'ORD-002', customerId: 3, type: 'takeaway', items: [{name:'Latte',qty:1,price:520},{name:'Banana Bread',qty:2,price:350}],   status:'completed', date:'2025-05-02 09:45', total:1342 },
-    { id: 'ORD-003', customerId: null, type:'dine-in', items: [{name:'Espresso',qty:1,price:350}],                                      status:'completed', date:'2025-05-02 10:02', total:385  },
-    { id: 'ORD-004', customerId: 5, type: 'dine-in',  items: [{name:'Flat White',qty:1,price:490},{name:'Club Sandwich',qty:1,price:780}], status:'pending', date:'2025-05-02 10:31', total:1397 },
+    { id: 'ORD-001', customerId: 1,    type: 'dine-in',  items: [{name:'Cappuccino',qty:2,price:480},{name:'Croissant',qty:1,price:290}],          status:'completed', date:'2025-05-02 09:14', total:1250 },
+    { id: 'ORD-002', customerId: 3,    type: 'takeaway', items: [{name:'Latte',qty:1,price:520},{name:'Banana Bread',qty:2,price:350}],             status:'completed', date:'2025-05-02 09:45', total:1220 },
+    { id: 'ORD-003', customerId: null, type: 'dine-in',  items: [{name:'Espresso',qty:1,price:350}],                                               status:'completed', date:'2025-05-02 10:02', total:350  },
+    { id: 'ORD-004', customerId: 5,    type: 'dine-in',  items: [{name:'Flat White',qty:1,price:490},{name:'Club Sandwich',qty:1,price:780}],       status:'completed', date:'2025-05-02 10:31', total:1270 },
 ];
 
 // ------------------------ Settings DB ------------------------
